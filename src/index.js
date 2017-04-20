@@ -7,7 +7,6 @@ import Reducer from './Reducers';
 import { Provider } from 'react-redux';
 
 let store = createStore(Reducer, applyMiddleware(thunkMiddleware));
-
 ReactDOM.render(
   <Provider store={store}>
     <OBRContainer />

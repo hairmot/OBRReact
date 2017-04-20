@@ -4,7 +4,8 @@ import TaskRow from './TaskRow';
 class SMRPanel extends Component {    
   render() {
 
-    let tasks = this.props.module.Tasks.map(a => <TaskRow module={this.props.module.Module} saveRow={this.props.saveRow} updateRow={this.props.updateRow} key={a.id} taskTitle={a.TaskTitle} task={a}/>);
+    let tasks = this.props.module.Tasks.filter(a => a.MabSeq).map(a => <TaskRow module={this.props.module.Module} 
+    saveRow={this.props.saveRow} updateRow={this.props.updateRow} key={a.MapCode + a.MabSeq} taskTitle={a.TaskTitle} task={a}/>);
     return (
         <div className="sv-panel sv-panel-primary">
             <div className="sv-panel-heading">

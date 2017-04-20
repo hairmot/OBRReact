@@ -8,22 +8,22 @@ class TaskRow extends Component {
       return (
 	
       <tr className="requestRow">
-			<td><p className="sv-form-control-static sv-text-center"><input type="checkbox" className="sv-text-align-center" name="Selected" checked={this.props.task.Selected} /></p></td>
-			<td><p type="text" className="sv-form-control-static sv-text-center">{this.props.task.Task}</p></td>
+			<td><p className="sv-form-control-static sv-text-center"><input type="checkbox" className="sv-text-align-center" name="Selected" onChange={this.updateRow} checked={this.props.task.Selected} /></p></td>
+			<td><p type="text" className="sv-form-control-static sv-text-center">{this.props.task.MabSeq}</p></td>
 			<td><input type="text" className="taskTitle sv-form-control" name="TaskTitle" onChange={this.updateRow} value={this.props.task.TaskTitle} size="50" /></td>
 			<td><p className="sv-form-control-static sv-text-center">{this.props.task.TaskWeighting}%</p></td>
-			<td><input type="text" className="dueDate sv-form-control" name="DueDate" value={this.props.task["DueDate/Time"]} /></td>
+			<td><input type="text" className="dueDate sv-form-control" name="DueDate" value={this.props.task.DueDate} onChange={this.updateRow}/></td>
 			<td>	
-                <select name="TaskType" value={this.props.task.TaskType} className="taskType sv-form-control">
-                     <option>Please select</option>
-                     <option>Phase Test</option>
+          <select onChange={this.updateRow} name="TaskType" value={this.props.task.TaskType} className="taskType sv-form-control">
+            <option>Please select</option>
+          	<option>Phase Test</option>
 						<option>Practical</option>
 						<option>Presentation/Group Work</option>
 						<option>Other</option>
-                </select>
+          </select>
             </td>
 			<td>
-                <select name="Dissertation" value={this.props.task.Dissertation} className="dissertation sv-form-control">
+        <select onChange={this.updateRow} name="Dissertation" value={this.props.task.Dissertation} className="dissertation sv-form-control">
 					<option>Please select</option>
 					<option>Yes</option>
 					<option>No</option>
@@ -42,8 +42,7 @@ class TaskRow extends Component {
 	}
 
   saveRow = () => {
-	console.log(this.props);
-	this.props.saveRow("hello");
+	this.props.saveRow(this.props);
   }  
 }
 export default TaskRow;

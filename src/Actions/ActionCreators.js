@@ -1,7 +1,7 @@
-export function saveRow(message) {   
+export function saveRow(data) {   
     return {
         type: "SAVE_ROW",
-        message: message
+        data
     }
 }
 
@@ -12,13 +12,12 @@ export function updateRow(data) {
     }
 }
 
-export function getData() {
+export function getData(url) {
     return function(dispatch) {
         dispatch(loadingData());
-        return fetch('api/index.js').then(response => 
-        response.json()).then(json =>
-            setTimeout(() => {
-            dispatch(receiveData(json)) }, 1000)
+        return fetch(url, {method: 'GET', credentials: "same-origin"}).then(response => 
+        response.json()).then(json =>        
+            dispatch(receiveData(json))
         );
     }
 }
