@@ -4,7 +4,7 @@ import { connect} from 'react-redux';
 import { bindActionCreators } from 'redux'
 import SMRPanel from './SMRPanel';
 
-class App extends Component {
+class OBRContainer extends Component {
   render() {
     let rows = this.props.modules.map(a => <SMRPanel key={a.Module} saveRow={this.props.actions.saveRow} updateRow={this.props.actions.updateRow} module={a} />);
     return (
@@ -40,4 +40,4 @@ const mapDispatchToProps = function(dispatch, ownProps) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(OBRContainer);
