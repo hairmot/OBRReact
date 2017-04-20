@@ -14,9 +14,8 @@ function Reducer(state, action) {
             clonedArray.modules.filter(a => a.Module === action.data.module)[0].Tasks.filter(a => a.Task === action.data.row.Task)[0][action.data.field] = action.data.newVal;
             return clonedArray;
 
-          case "LOADING_DATA" :
-          console.log("loading data");
-          return state;
+          case "LOADING_DATA" :          
+          return {...state, loading: action.loading};
 
           case "RECEIVE_DATA" :
           console.log("receiving data");

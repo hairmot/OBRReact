@@ -22,6 +22,7 @@ class OBRContainer extends Component {
             <p>Please provide evidence of work completed to date for each assessment task that you have selected. For pieces of work that are not electronic (eg models) a photograph of the work can be uploaded.</p>
           </div>
           <hr />
+          <div style={{display: this.props.loading ? 'inherit' : 'none'}} className="sv-text-center"><img src="img/load.gif" alt="loading" />&nbsp;Loading</div>
           {rows}
         </div>
       </div>
@@ -35,7 +36,8 @@ class OBRContainer extends Component {
 
 const mapStateToProps = function(store, ownProps) {
   return {
-    modules: store.modules
+    modules: store.modules,
+    loading: store.loading
   };
 }
 
