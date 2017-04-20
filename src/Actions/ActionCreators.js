@@ -11,3 +11,29 @@ export function updateRow(data) {
         data
     }
 }
+
+export function getData() {
+    return function(dispatch) {
+        dispatch(loadingData());
+        return fetch('api/index.js').then(response => 
+        response.json()).then(json =>
+            setTimeout(() => {
+            dispatch(receiveData(json)) }, 1000)
+        );
+    }
+}
+
+function loadingData() {
+    return {
+        type: "LOADING_DATA",
+        loading: true
+    }
+}
+
+function receiveData(json) {
+    return {
+        type: "RECEIVE_DATA",
+        loading: false,
+        data: json
+    }
+}

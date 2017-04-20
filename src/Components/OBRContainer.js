@@ -6,7 +6,7 @@ import SMRPanel from './SMRPanel';
 
 class OBRContainer extends Component {
   render() {
-    let rows = this.props.modules.map(a => <SMRPanel key={a.Module} saveRow={this.props.actions.saveRow} updateRow={this.props.actions.updateRow} module={a} />);
+    let rows = this.props.modules.filter(a => a.Module).map(a => <SMRPanel key={a.Module} saveRow={this.props.actions.saveRow} updateRow={this.props.actions.updateRow} module={a} />);
     return (
       <div className="sv-panel sv-panel-primary" >
         <div className="sv-panel-heading">
@@ -27,7 +27,11 @@ class OBRContainer extends Component {
       </div>
     );
   }
+  componentDidMount() {
+    this.props.actions.getData();
+  }
 }
+
 
 const mapStateToProps = function(store, ownProps) {
   return {
