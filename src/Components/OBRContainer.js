@@ -16,8 +16,8 @@ class OBRContainer extends Component {
   }
 
   componentDidMount() {
-  //this.props.actions.getData(document.getElementById('ApiGet').innerHTML);
-  this.props.actions.getData('api/index.js');
+  this.props.actions.getData(document.getElementById('ApiGet').innerHTML);
+ // this.props.actions.getData('api/index.js');
   }
 }
 
